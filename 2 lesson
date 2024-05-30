@@ -1,0 +1,24 @@
+# ЗАдача 2-3 по SQL
+#Создайте для сущности mobile_phones внешний ключ manufacturer_id (идентификатор производителя), направленный на атрибут id сущности manufacturer. Установите каскадное обновление - CASCADE, а при удалении записи из сущности manufacturer – SET NULL.
+#Используя CRUD-операцию UPDATE обновите данные в атрибуте manufacturer_id сущности mobile_phones согласно значений, имеющихся в атрибуте manufacturer.
+#Удалите атрибут manufacturer из сущности mobile_phones.
+#Выведите идентификатор, название и идентификатор производителя сущности mobile_phones.
+
+ALTER TABLE itresume2606321.mobile_phones
+  ADD COLUMN manufacturer_id INT,  
+  ADD CONSTRAINT fk_manufacturer_id
+  FOREIGN KEY (manufacturer_id) REFERENCES itresume2606321.manufacturer(id)
+  ON UPDATE CASCADE
+  ON DELETE SET NULL;
+
+UPDATE itresume2606321.mobile_phones
+SET manufacturer_id = m.id
+FROM itresume2606321.manufacturer m
+WHERE m.name = mobile_phones.manufacturer;
+
+ALTER TABLE itresume2606321.mobile_phones
+DROP COLUMN manufacturer;
+
+SELECT id, product_name, manufacturer_id
+FROM itresume2606321.mobile_phones;
+
