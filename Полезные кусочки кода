@@ -18,8 +18,8 @@ GROUP BY post
 HAVING post = 'Начальник';
 
 #3 Посчитайте и выведите количество сотрудников с должностью 'Рабочий' и возрастом не моложе 24 лет и не старше 49 лет.
-SELECT post,COUNT(id)
+SELECT COUNT(id) AS 'количество'
 FROM staff
-WHERE age > 24 AND age < 49
+WHERE age >= 24 AND age <= 49
 GROUP BY post 
 HAVING post = 'Рабочий';
