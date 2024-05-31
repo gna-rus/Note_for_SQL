@@ -9,4 +9,10 @@ HAVING COUNT(*) > 1; # требование к каждой группировк
 # Надо из staff вывести суммарную з\п (salary) по каждой должности (post)
 SELECT post, SUM(salary)
 FROM staff
-GROUP BY post ;
+GROUP BY post;
+
+# Надо из staff вывести суммарную з\п (salary) для долности Начальник
+SELECT post,SUM(salary)
+FROM staff
+GROUP BY post 
+HAVING post = 'Начальник';
