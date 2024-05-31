@@ -23,3 +23,7 @@ FROM staff
 WHERE age >= 24 AND age <= 49
 GROUP BY post 
 HAVING post = 'Рабочий';
+
+#4 Посчитайте и выведите количество уникальных должностей, имеющихся у сотрудников в сущности 'staff'.
+SELECT COUNT(DISTINCT post) AS 'количество специальностей'
+FROM staff;
